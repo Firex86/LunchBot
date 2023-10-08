@@ -5,6 +5,7 @@ Library    RPA.Browser.Selenium    auto_close=${FALSE}
 Library    RPA.PDF
 Library    RPA.Word.Application
 Library    RPA.HTTP
+Library    RPA.Robocorp.Vault
 
 *** Keywords ***
 
