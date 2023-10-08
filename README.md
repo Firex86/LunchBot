@@ -1,14 +1,7 @@
-# Template: Robot Framework - Minimal
+# LunchBot
 
-This is the simplest template to start from.
+LunchBot is still being worked on. Please check in later.
 
-- Get started from a simple task template in `tasks.robot`.
-  - Uses [Robot Framework](https://robocorp.com/docs/languages-and-frameworks/robot-framework/basics) syntax.
-- You can configure your robot `robot.yaml`.
-- You can configure dependencies in `conda.yaml`.
+![progress](https://user-images.githubusercontent.com/46250017/225297875-90406ae0-f151-440d-bc85-1ec021d752e8.gif)
 
-## Learning materials
 
-- [Robocorp Developer Training Courses](https://robocorp.com/docs/courses)
-- [Documentation links on Robot Framework](https://robocorp.com/docs/languages-and-frameworks/robot-framework)
-- [Example bots in Robocorp Portal](https://robocorp.com/portal)
