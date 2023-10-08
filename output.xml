@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20231008 15:18:36.708" rpa="true" schemaversion="4">
+<suite id="s1" name="Tasks" source="c:\Users\ville\OneDrive\Tiedostot\Koulutus\RPA Kurssi\Project\tasks.robot">
+<test id="s1-t1" name="Open Browser For Emails And LogIn" line="16">
+<status status="FAIL" starttime="20231008 15:18:40.182" endtime="20231008 15:18:40.186">Task cannot be empty.</status>
+</test>
+<doc>Copies the lunch menu, marks out any ingredient that causes allergies then sends it to students via email.</doc>
+<status status="FAIL" starttime="20231008 15:18:36.722" endtime="20231008 15:18:40.191"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
