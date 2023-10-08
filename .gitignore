@@ -15,4 +15,5 @@ temp/
 testrun/*
 .~lock*
 *.pkl
-
+*.xml
+*.html
