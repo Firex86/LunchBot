@@ -13,12 +13,12 @@ Library    RPA.Desktop
 
 Open Browser For Emails And Write Email
     Open Available Browser    https://accounts.google.com/
-    Input Text    id:identifierId    <CorrectEmailHere>
+    Input Text    id:identifierId     <CorrectEmail>
     Click Button    Next
 
-Write Password And LogIn
+Write Email Password And LogIn
     Wait Until Element Is Visible    name:Passwd   
-    Input Password    name:Passwd    <CorrectPasswordHere>
+    Input Password    name:Passwd    <CorrectPassword>
     Click Button    Next
 
     
@@ -31,5 +31,5 @@ Write Password And LogIn
 *** Tasks ***
 Copies the lunch menu, marks out any ingredient that causes allergies then sends it to students via email.
     Open Browser For Emails And Write Email
-    Write Password And LogIn
+    Write Email Password And LogIn
     
