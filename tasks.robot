@@ -17,9 +17,9 @@ Copies the lunch menu, marks out any ingredient that causes allergies then sends
 
 *** Keywords ***
 Open Browser For Emails And Write Email
-    Open Available Browser    https://accounts.google.com/
+    Open Available Browser    https://mail.google.com/mail/u/0/#inbox
     Input Text    id:identifierId    <CorrectEmail>
-    # Click Button    Next
+    Click Button    Next
 
 Write Email Password And LogIn
     Wait Until Element Is Visible    name:Passwd
