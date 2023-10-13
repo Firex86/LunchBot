@@ -52,7 +52,7 @@ Send All Emails
     END
 
 Open a new window and login to Google Drive
-    Switch Window    new    https://drive.google.com/drive/u/1/folders/1f-stVk27w0S1YeMIhK9lBwWkEg6GnUHn
+    Open Available Browser    https://drive.google.com/drive/u/1/folders/1f-stVk27w0S1YeMIhK9lBwWkEg6GnUHn
     Input Text    id:identifierId    ${USERNAME}
     Click Button    Next
     Wait Until Element Is Visible    name:Passwd
