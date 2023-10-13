@@ -17,10 +17,6 @@ ${PASSWORD}    <CorrectPassword>
 
 
 *** Tasks ***
-Open the Browser For lunch menu, show whole week menu
-    Open Available Browser
-    Click Button 
-
 Copies the lunch menu, marks out any ingredient that causes allergies then sends it to students via email.
     Send All Emails
 
