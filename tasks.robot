@@ -17,10 +17,18 @@ ${PASSWORD}    <CorrectPassword>
 
 
 *** Tasks ***
+Open the Browser For lunch menu, show whole week menu
+    Open Available Browser
+    Click Button 
+
 Copies the lunch menu, marks out any ingredient that causes allergies then sends it to students via email.
     Send All Emails
 
 *** Keywords ***
+Open the Browser For lunch menu, show whole week menu
+    Open Available Browser
+    ...    https://www.compass-group.fi/ravintolat-ja-ruokalistat/foodco/kaupungit/vantaa/laurea-tikkurilan-kampus/
+
 Send An Email With The Correct Lunch Menu For One Person
     # Sends an email to a single recipient.
     [Arguments]    ${RECIPIENT}
