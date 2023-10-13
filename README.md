@@ -5,7 +5,7 @@ LunchBot is still being worked on. Please check in later.
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Automation Opens The Correct Website
+- [X] Automation Opens The Correct Website
 - [ ] Automation Copies All The Necessary Information And Saves Them To A Word File
 - [ ] Automation Marks Out All Allergens And Saves The Word File As A .PDF File
 - [ ] Automation Copies All The Necessary Information And Saves Them To A Word File
