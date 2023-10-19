@@ -10,7 +10,6 @@ Library             RPA.Desktop
 Library             RPA.Email.ImapSmtp    smtp_server=smtp.gmail.com    smtp_port=587
 Library             RPA.Excel.Files
 
-
 *** Variables ***
 # NOTE: User has to set the correct email and password.
 ${USERNAME}     <CorrectEmail>
@@ -28,6 +27,27 @@ Open the Browser For lunch menu, show whole week menu
     ...    https://www.compass-group.fi/ravintolat-ja-ruokalistat/foodco/kaupungit/vantaa/laurea-tikkurilan-kampus/
     Click Button    id:declineButton
     Click Button    Koko viikko
+
+# Find allergies and color them
+# Identify the allergy element, for example, by its XPath
+# allergy_element = driver.find_element_by_xpath('//*[@id="app"]/main/div/div[3]/div/div/div/div[2]/div[2]/div[1]/div/div[1]/div/button/div[1]/div/p')
+
+# Determine the condition that triggers color change
+# if allergy_is_severe:
+    # Use JavaScript to change the color (example: red)
+    # driver.execute_script("arguments[0].style.backgroundColor = 'red';", allergy_element)
+    
+    # Define color mappings for each letter
+# color_mappings = {
+ #   'L': 'yellow',
+  #  'M': 'black',
+  #  'VL': 'yellow',
+ #   'PÄ': 'red',
+ #   'SO': 'red',
+ #   'GL': 'black',
+ #   'MU': 'red',
+#}
+
 
 Send An Email With The Correct Lunch Menu For One Person
     # Sends an email to a single recipient.
