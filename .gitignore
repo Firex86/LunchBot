@@ -20,3 +20,4 @@ testrun/*
 *.json
 *.xlsx
 *.pdf
+*.docx

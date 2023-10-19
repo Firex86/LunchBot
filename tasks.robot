@@ -12,13 +12,19 @@ Library             RPA.Excel.Files
 
 *** Variables ***
 # NOTE: User has to set the correct email and password.
-${USERNAME}     <CorrectEmail>
-${PASSWORD}     <CorrectPassword>
+${USERNAME}     <Correct Email>
+${PASSWORD}     <Correct password>
+
+${LaureaRuoka}    Tähän tulee ruoka tiedot kopioutuna edellisistä vaiheista. 
+...    Nyt vain placeholder teksti testausta varten.
+
+
 
 
 *** Tasks ***
 Copies the lunch menu, marks out any ingredient that causes allergies then sends it to students via email.
-    Open the Browser For lunch menu, show whole week menu
+    Create A Word document and save it as a .pdf file
+    Send All Emails
 
 
 *** Keywords ***
@@ -47,6 +53,15 @@ Open the Browser For lunch menu, show whole week menu
  #   'GL': 'black',
  #   'MU': 'red',
 #}
+
+Create A Word document and save it as a .pdf file
+    #Note: this requires a Microsoft Word application on users computer to work correctly.
+    RPA.Word.Application.Open Application
+    Create New Document
+    Write Text    ${LaureaRuoka}
+    Save Document As    RuokaL
+    Export To Pdf    RuokaL
+    Quit Application    save_changes=${True}
 
 
 Send An Email With The Correct Lunch Menu For One Person
