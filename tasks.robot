@@ -32,7 +32,8 @@ Open the Browser For lunch menu, show whole week menu
     Open Available Browser
     ...    https://www.compass-group.fi/ravintolat-ja-ruokalistat/foodco/kaupungit/vantaa/laurea-tikkurilan-kampus/
     Click Button    id:declineButton
-    Click Button    Koko viikko
+    Click Button    //*[contains(text(),'Koko viikko')]
+    Click Button    //*[contains(text(),'Seuraava viikko')]
 
 # Find allergies and color them
 # Identify the allergy element, for example, by its XPath
