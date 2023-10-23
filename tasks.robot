@@ -9,30 +9,49 @@ Library             RPA.Robocorp.Vault
 Library             RPA.Desktop
 Library             RPA.Email.ImapSmtp    smtp_server=smtp.gmail.com    smtp_port=587
 Library             RPA.Excel.Files
+Library             RequestsLibrary
+Library             RPA.JSON
+
+
 
 *** Variables ***
 # NOTE: User has to set the correct email and password.
 ${USERNAME}     <Correct Email>
-${PASSWORD}     <Correct password>
-
-${LaureaRuoka}    Tähän tulee ruoka tiedot kopioutuna edellisistä vaiheista. 
-...    Nyt vain placeholder teksti testausta varten.
+${PASSWORD}     <Correct Password>
+${LaureaRuoka}    Ruokalistan otsikko\n\n Ruoka1\n\n Ruoka2
+${API_URL}        https://www.compass-group.fi
+${Response}
+${RestaurantName}
+    
 
 
 
 
 *** Tasks ***
 Copies the lunch menu, marks out any ingredient that causes allergies then sends it to students via email.
+    Open the Browser For lunch menu, show whole week menu
     Create A Word document and save it as a .pdf file
     Send All Emails
+   
 
+    
+   
 
 *** Keywords ***
 Open the Browser For lunch menu, show whole week menu
     Open Available Browser
-    ...    https://www.compass-group.fi/ravintolat-ja-ruokalistat/foodco/kaupungit/vantaa/laurea-tikkurilan-kampus/
-    Click Button    id:declineButton
-    Click Button    Koko viikko
+    ...    https://www.compass-group.fi/menuapi/feed/json?costNumber=3032&language=fi 
+    
+    
+Fetch JSON Data
+    RequestsLibrary.Create Session    mysession    ${API_URL}
+    ${Response}=    RequestsLibrary.GET On Session    mysession    url=/menuapi/feed/json?costNumber=3032&language=fi 
+
+    ${json_content}=    RequestsLibrary.to json    ${Response.content}
+
+    ${RestaurantName}=    Get value from JSON    ${json_content}    $.RestaurantName
+    Log To Console    ${RestaurantName[0]}
+   
 
 # Find allergies and color them
 # Identify the allergy element, for example, by its XPath
