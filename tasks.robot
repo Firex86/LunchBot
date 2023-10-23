@@ -16,7 +16,7 @@ ${USERNAME}     <Correct Email>
 ${PASSWORD}     <Correct password>
 
 ${LaureaRuoka}    Tähän tulee ruoka tiedot kopioutuna edellisistä vaiheista. 
-...    Nyt vain placeholder teksti testausta varten.
+...    Nyt vain placeholder teksti testausta varten. :D
 
 
 
@@ -34,6 +34,7 @@ Open the Browser For lunch menu, show whole week menu
     Click Button    id:declineButton
     Click Button    //*[contains(text(),'Koko viikko')]
     Click Button    //*[contains(text(),'Seuraava viikko')]
+    Click Button   driver.find_element_by_xpath('//*[@id="app"]/html/body/div[2]/main/div/div[3]/div/div/div/div[2]/div[2]/button[2]
 
 # Find allergies and color them
 # Identify the allergy element, for example, by its XPath
