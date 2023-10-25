@@ -5,10 +5,9 @@ LunchBot is still being worked on. Please check in later.
 <!-- ROADMAP -->
 ## Roadmap
 
-- [X] Automation Opens The Correct Website
-- [ ] Automation Copies All The Necessary Information And Saves Them To A Word File
+- [X] Automation Fetches The Data From API
+- [X] Automation Parces The Correct Data And Saves It To A Word File
 - [ ] Automation Marks Out All Allergens And Saves Them To A Parametre
-- [x] Automation Copies All The Necessary Information And Saves Them To A Word File
 - [x] Automation Sends The .PDF File To All Members In The Email List
 - [ ] Automation Saves The .PDF File In Google Drive For Later Usage
 
