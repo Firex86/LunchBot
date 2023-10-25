@@ -29,9 +29,7 @@ ${RestaurantName}
 
 *** Tasks ***
 Copies the lunch menu, marks out any ingredient that causes allergies then sends it to students via email.
-    Open the Browser For lunch menu, show whole week menu
-    Create A Word document and save it as a .pdf file
-    Send All Emails
+    Fetch JSON Data
    
 
     
@@ -49,9 +47,41 @@ Fetch JSON Data
 
     ${json_content}=    RequestsLibrary.to json    ${Response.content}
 
-    ${RestaurantName}=    Get value from JSON    ${json_content}    $.RestaurantName
-    Log To Console    ${RestaurantName[0]}
-   
+    # Word part added for testing purposes, which will be deleted in the final version
+    RPA.Word.Application.Open Application
+    Create New Document
+    
+    # Automation looks for each necessary part of the response
+    ${Date0}=    Get value from JSON    ${json_content}    $.MenusForDays[0].Date
+    ${Salaatti0}=    Get value from JSON    ${json_content}    $.MenusForDays[0].SetMenus[0].Name
+    ${SalaattiRuoka0}=    Get value from JSON    ${json_content}    $.MenusForDays[0].SetMenus[0].Components
+    ${Kasvis0}=    Get value from JSON    ${json_content}    $.MenusForDays[0].SetMenus[1].Name
+    ${KasvisRuoka0}=    Get value from JSON    ${json_content}    $.MenusForDays[0].SetMenus[1].Components
+    ${Keitto0}=    Get value from JSON    ${json_content}    $.MenusForDays[0].SetMenus[2].Name
+    ${KeittoRuoka0}=    Get value from JSON    ${json_content}    $.MenusForDays[0].SetMenus[2].Components
+    ${Lounas0}=    Get value from JSON    ${json_content}    $.MenusForDays[0].SetMenus[3].Name
+    ${LounasRuoka0}=    Get value from JSON    ${json_content}    $.MenusForDays[0].SetMenus[3].Components
+    ${Jalki0}=    Get value from JSON    ${json_content}    $.MenusForDays[0].SetMenus[4].Name
+    ${JalkiRuoka0}=    Get value from JSON    ${json_content}    $.MenusForDays[0].SetMenus[4].Components
+    
+    # Automation writes previous response part to word file
+    Write Text    ${Date0}
+    Write Text    ${Salaatti0}
+    Write Text    ${SalaattiRuoka0}
+    Write Text    ${Kasvis0}
+    Write Text    ${KasvisRuoka0}
+    Write Text    ${Keitto0}
+    Write Text    ${KeittoRuoka0}
+    Write Text    ${Lounas0}
+    Write Text    ${LounasRuoka0}
+    Write Text    ${Jalki0}
+    Write Text    ${JalkiRuoka0}
+
+    # Automation save the document as a word file and a .pdf file.
+    Save Document As    RuokaL
+    Export To Pdf    RuokaL
+    Quit Application    save_changes=${True}
+ 
 
 # Find allergies and color them
 # Identify the allergy element, for example, by its XPath
