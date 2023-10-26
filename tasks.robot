@@ -11,17 +11,16 @@ Library             RPA.Email.ImapSmtp    smtp_server=smtp.gmail.com    smtp_por
 Library             RPA.Excel.Files
 Library             RequestsLibrary
 Library             RPA.JSON
-Library    RPA.Smartsheet
+
 
 
 *** Variables ***
 # NOTE: User has to set the correct email and password.
 ${USERNAME}     <Correct Email>
 ${PASSWORD}     <Correct Password>
-${LaureaRuoka}    Ruokalistan otsikko\n\n Ruoka1\n\n Ruoka2
 ${API_URL}        https://www.compass-group.fi
 ${Response}
-${RestaurantName}
+
     
 
 *** Tasks ***
@@ -47,7 +46,7 @@ Fetch JSON Data
 
     # Automation looks for each necessary part of the response
     ${Date0}=    Get value from JSON    ${json_content}    $.MenusForDays[${x}].Date
-    ${Salaatti0}=    Get value from JSON    ${json_content}    $.MenusForDays[${x}].SetMenus[0].Name
+    ${Salaatti0}=    Get value from JSON    ${json_content}    $.MenusForDays[${x}].SetMenus[0].Name     
     ${SalaattiRuoka0}=    Get value from JSON    ${json_content}    $.MenusForDays[${x}].SetMenus[0].Components
     ${Kasvis0}=    Get value from JSON    ${json_content}    $.MenusForDays[${x}].SetMenus[1].Name
     ${KasvisRuoka0}=    Get value from JSON    ${json_content}    $.MenusForDays[${x}].SetMenus[1].Components
@@ -70,6 +69,7 @@ Fetch JSON Data
     Write Text    ${LounasRuoka0}
     Write Text    ${Jalki0}
     Write Text    ${JalkiRuoka0}
+    Write Text    \n
 
     ${x}=    Evaluate    ${x} + 1
 
@@ -129,3 +129,4 @@ Open a new window and login to Google Drive
     Wait Until Element Is Visible    name:Passwd
     Input Text    id:identifierId    ${PASSWORD}
     Click Button    Next
+
