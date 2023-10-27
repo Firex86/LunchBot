@@ -28,6 +28,7 @@ ${Response}     ${EMPTY}
 *** Tasks ***
 Copies the lunch menu, marks out any ingredient that causes allergies then sends it to students via email.
     Fetch JSON Data
+    Save the menu as a PDF file and name it accordingly
 
 
 *** Keywords ***
@@ -76,8 +77,8 @@ Fetch JSON Data
     END
 
     # Automation save the document as a word file and a .pdf file.
-    Save Document As    RuokaL
-    Export To Pdf    RuokaL
+    Save Document As    ${OUTPUT_DIR}${/}RuokaL
+    Export To Pdf    ${OUTPUT_DIR}${/}RuokaL
     Quit Application    save_changes=${True}
 
 # Find allergies and color them
@@ -132,14 +133,14 @@ Save the menu as a PDF file and name it accordingly
     # Current date is saved in a variable which is then used in naming the file.
 
     ${file_name_prefix}=    Set Variable    RuokaLista
-    ${file_name_date}=    Get Current Date    result_format=%d%m%y%
+    ${file_name_date}=    Get Current Date       result_format=%d.%m.%Y
     ${file_name}=    Set Variable    ${file_name_prefix}${file_name_date}.pdf
 
     # Make a renamed copy of RuokaL
 
-    ${source_file}=    Set Variable    ${SUITE_SOURCE}/RuokaL.pdf
-    ${destination_file}=    Set Variable    ${SUITE_SOURCE}/RuokaL_Copy.pdf
+    ${source_file}=    Set Variable    RuokaL.pdf
+    ${destination_file}=    Set Variable    ${file_name}
 
-    Copy File    ${source_file}    ${destination_file}
+    RPA.FileSystem.Copy File    ${source_file}    ${destination_file}
 
-    Rename    RuokaL_Copy    ${file_name}
+   
