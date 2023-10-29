@@ -14,7 +14,9 @@ Library             RPA.JSON
 Library             DateTime
 Library             RPA.FileSystem
 Library             OperatingSystem
-Library             RPA.FTP
+Library             String
+
+
 
 
 *** Variables ***
@@ -28,7 +30,7 @@ ${Response}     ${EMPTY}
 *** Tasks ***
 Copies the lunch menu, marks out any ingredient that causes allergies then sends it to students via email.
     Fetch JSON Data
-    Save the menu as a PDF file and name it accordingly
+    
 
 
 *** Keywords ***
