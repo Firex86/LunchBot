@@ -14,7 +14,7 @@ Library             RPA.JSON
 Library             DateTime
 Library             RPA.FileSystem
 Library             OperatingSystem
-Library             String
+
 
 
 
@@ -30,6 +30,8 @@ ${Response}     ${EMPTY}
 *** Tasks ***
 Copies the lunch menu, marks out any ingredient that causes allergies then sends it to students via email.
     Fetch JSON Data
+    Send All Emails
+    Save the menu as a PDF file and name it accordingly
     
 
 
@@ -47,7 +49,7 @@ Fetch JSON Data
     ${x}=    Set Variable    ${0}
 
     # While loop runs for five days.
-    WHILE    ${x} <= 5
+    WHILE    ${x} <= 4
         # Automation looks for each necessary part of the response
         ${Date0}=    Get value from JSON    ${json_content}    $.MenusForDays[${x}].Date
         ${Salaatti0}=    Get value from JSON    ${json_content}    $.MenusForDays[${x}].SetMenus[0].Name
@@ -78,30 +80,11 @@ Fetch JSON Data
         ${x}=    Evaluate    ${x} + 1
     END
 
-    # Automation save the document as a word file and a .pdf file.
+    # Automation saves the document as a word file and a .pdf file.
     Save Document As    ${OUTPUT_DIR}${/}RuokaL
     Export To Pdf    ${OUTPUT_DIR}${/}RuokaL
     Quit Application    save_changes=${True}
 
-# Find allergies and color them
-# Identify the allergy element, for example, by its XPath
-# allergy_element = driver.find_element_by_xpath('//*[@id="app"]/main/div/div[3]/div/div/div/div[2]/div[2]/div[1]/div/div[1]/div/button/div[1]/div/p')
-
-# Determine the condition that triggers color change
-# if allergy_is_severe:
-    # Use JavaScript to change the color (example: red)
-    # driver.execute_script("arguments[0].style.backgroundColor = 'red';", allergy_element)
-
-    # Define color mappings for each letter
-# color_mappings = {
- #    'L': 'yellow',
-    #    'M': 'black',
-    #    'VL': 'yellow',
- #    'PÄ': 'red',
- #    'SO': 'red',
- #    'GL': 'black',
- #    'MU': 'red',
-# }
 
 Send An Email With The Correct Lunch Menu For One Person
     # Sends an email to a single recipient.
@@ -111,7 +94,7 @@ Send An Email With The Correct Lunch Menu For One Person
     ...    recipients=${RECIPIENT}[Email]
     ...    subject=Ensiviikon ruokalista.
     ...    body=Ohessa ensiviikon ruokalista.
-    ...    attachments=RuokaL.pdf
+    ...    attachments=${OUTPUT_DIR}${/}RuokaL.pdf
 
 Send All Emails
     # Opens the premade Excel file and reads the contents.
@@ -123,14 +106,6 @@ Send All Emails
         Send An Email With The Correct Lunch Menu For One Person    ${RECIPIENT}
     END
 
-Open a new window and login to Google Drive
-    Open Available Browser    https://drive.google.com/drive/u/1/folders/1f-stVk27w0S1YeMIhK9lBwWkEg6GnUHn
-    Input Text    id:identifierId    ${USERNAME}
-    Click Button    Next
-    Wait Until Element Is Visible    name:Passwd
-    Input Text    id:identifierId    ${PASSWORD}
-    Click Button    Next
-
 Save the menu as a PDF file and name it accordingly
     # Current date is saved in a variable which is then used in naming the file.
 
@@ -140,8 +115,8 @@ Save the menu as a PDF file and name it accordingly
 
     # Make a renamed copy of RuokaL
 
-    ${source_file}=    Set Variable    RuokaL.pdf
-    ${destination_file}=    Set Variable    ${file_name}
+    ${source_file}=    Set Variable    ${OUTPUT_DIR}${/}RuokaL.pdf
+    ${destination_file}=    Set Variable    ${OUTPUT_DIR}${/}${file_name}
 
     RPA.FileSystem.Copy File    ${source_file}    ${destination_file}
 
